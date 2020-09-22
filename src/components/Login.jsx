@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router";
-// import { AuthContext } from "./Auth.js";
 import { Form, Input, Button, Layout, Row, Col, Card } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
@@ -15,12 +14,19 @@ const NormalLoginForm = ({history, handleCurrentUser}) => {
   const handleLogin = (values) => {
     const { email, password } = values
     const user = users.find(x => x.email === email && x.password === password)
-    handleCurrentUser(user)
+    // handleCurrentUser(user)
     if (user) {
+      localStorage.setItem('currentUser', JSON.stringify({name: user.name, type: user.type}))
       history.push("/");
     } else {
       setErrorMessage('El usuario o la contraseña estan errados')
     }
+  }
+
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+  if (currentUser) {
+    return <Redirect to="/" />;
   }
 
   const onFinishFailed = errorInfo => {

@@ -2,8 +2,9 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 // import { AuthContext } from "./Auth";
 
-const PrivateRoute = ({ children, currentUser, ...rest }) => {
-
+// const PrivateRoute = ({ children, currentUser, ...rest }) => {
+const PrivateRoute = ({ children, ...rest }) => {  
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
   return (
     <Route
       {...rest}
