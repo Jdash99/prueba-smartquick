@@ -4,7 +4,7 @@ import ResumenMedallas from './ResumenMedallas';
 
 const { TabPane } = Tabs;
 
-const API_URL = "https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/olympicWinners.json"
+const API_URL = "https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/olympicWinners.json";
 
 const columns = [
   {
