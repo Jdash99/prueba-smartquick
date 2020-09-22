@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { Table, Tabs, Row, Col } from 'antd';
+import { Table, Tabs } from 'antd';
+import ResumenMedallas from './ResumenMedallas';
 
 const { TabPane } = Tabs;
 
@@ -61,6 +62,7 @@ const columns = [
 
 const Olimpiadas = () => {
   const [olimpiadasData, setOlimpiadasData] = useState(null)
+  const [medalsTotal, setMedalsTotal] = useState({gold: null, silver: null, bronze: null})
   useEffect(() => {
     loadData();
   }, [])
@@ -68,7 +70,12 @@ const Olimpiadas = () => {
   const loadData = async () => {
     const response = await fetch(API_URL)
     const data = await response.json();
+    const goldTotal = data.reduce((prev, cur) => prev + cur.gold, 0);
+    const silverTotal = data.reduce((prev, cur) => prev + cur.silver, 0);
+    const bronzeTotal = data.reduce((prev, cur) => prev + cur.bronze, 0);
+
     setOlimpiadasData(data)
+    setMedalsTotal({gold: goldTotal, silver: silverTotal, bronze: bronzeTotal})
   }
 
   return (
@@ -77,11 +84,7 @@ const Olimpiadas = () => {
         <Table size="small" columns={columns} dataSource={olimpiadasData} />        
       </TabPane>
       <TabPane tab="Totales por medalla" key="2">
-        <Row>
-          <Col span={8}>col-8</Col>
-          <Col span={8}>col-8</Col>
-          <Col span={8}>col-8</Col>
-        </Row>
+        <ResumenMedallas medalsTotal={medalsTotal}/>
       </TabPane>
     </Tabs>
   )

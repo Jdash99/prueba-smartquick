@@ -1,7 +1,7 @@
 @import '~antd/dist/antd.css';
 
 .ant-layout-header {
-  background: #7dbcea;
+  background: #0093ff;
   color: #fff;
 }
 
@@ -15,4 +15,25 @@
 .site-layout-content {
   padding: 24px;
   height: calc(100vh - 64px);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;  
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.maintenanceMessage {
+  font-size: 45px;
 }
