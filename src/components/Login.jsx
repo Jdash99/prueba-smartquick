@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router";
-import { Form, Input, Button, Layout, Row, Col, Card } from 'antd';
+import { Form, Input, Button, Layout, Row, Col, Card, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const users = [
@@ -8,13 +8,12 @@ const users = [
   {email:'dev@smartquick.com', name: 'Jim Carrey', password:'dev', type:'coordinador'}
 ]
 
-const NormalLoginForm = ({history, handleCurrentUser}) => {
+const NormalLoginForm = ({history}) => {
   const [errorMessage, setErrorMessage] = useState("")
   
   const handleLogin = (values) => {
     const { email, password } = values
     const user = users.find(x => x.email === email && x.password === password)
-    // handleCurrentUser(user)
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify({name: user.name, type: user.type}))
       history.push("/");
@@ -29,16 +28,12 @@ const NormalLoginForm = ({history, handleCurrentUser}) => {
     return <Redirect to="/" />;
   }
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
-    <Layout className="test">
+    <Layout className="loginBG">
       <Row justify="center" align="middle" style={{minHeight: '100vh'}}>
         <Col sm={{span:12}} md={{span:9}} lg={{ span: 7}} xl={{ span: 6}} xxl={{ span: 5}}>
         <Card>
-          <h2>Inicio Sesion</h2>
+          <h2>Ingreso</h2> <br/>
           <Form
             name="normal_login"
             className="login-form"
@@ -54,12 +49,16 @@ const NormalLoginForm = ({history, handleCurrentUser}) => {
               name="password"
               rules={[{ required: true, message: 'Por favor digite su clave' }]}
             >
-              <Input 
+              <Input.Password 
                 size="large"
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
                 placeholder="Password"
               />
+            </Form.Item>
+
+            <Form.Item name="remember" valuePropName="checked">
+              <Checkbox>Recuerdame</Checkbox>
             </Form.Item>
 
             <Form.Item>

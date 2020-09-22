@@ -23,7 +23,6 @@ const ShowByType = ({user}) => {
   return <div></div>
 }
 
-// const AppLayout = ({currentUser}) => {
 const AppLayout = ({history}) => {
   const signOut = () => {
     localStorage.clear()

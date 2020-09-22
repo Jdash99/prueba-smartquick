@@ -37,3 +37,8 @@
 .maintenanceMessage {
   font-size: 45px;
 }
+
+.loginBG {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,144,255,1) 83%, rgba(0,212,255,1) 100%);
+}
