@@ -14,8 +14,10 @@ Abra http://localhost:3000 para visualizarlo en el navegador.
 
 Para ingresar a la pagina principal digite alguno de estos dos usuarios:
 
+```
   email:'admin@smartquick.com', 
   password:'admin'
   
   email:'dev@smartquick.com', 
   password:'dev'
+```
