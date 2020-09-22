@@ -81,7 +81,7 @@ const Olimpiadas = () => {
   return (
     <Tabs>
       <TabPane tab="Listado ganadores olimpiadas" key="1">
-        <Table size="small" columns={columns} dataSource={olimpiadasData} />        
+        <Table size="small" rowKey={row => row.athlete + row.age + row.total} columns={columns} dataSource={olimpiadasData} />        
       </TabPane>
       <TabPane tab="Totales por medalla" key="2">
         <ResumenMedallas medalsTotal={medalsTotal}/>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router";
-import { Form, Input, Button, Layout, Row, Col, Card, Checkbox } from 'antd';
+import { Form, Input, Button, Layout, Row, Col, Card } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const users = [
@@ -55,10 +55,6 @@ const NormalLoginForm = ({history}) => {
                 type="password"
                 placeholder="Password"
               />
-            </Form.Item>
-
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Recuerdame</Checkbox>
             </Form.Item>
 
             <Form.Item>
